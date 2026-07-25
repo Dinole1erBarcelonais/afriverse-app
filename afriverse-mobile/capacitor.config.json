@@ -1,0 +1,13 @@
+{
+  "appId": "com.afriverse.app",
+  "appName": "AfriVerse",
+  "webDir": "www",
+  "server": {
+    "url": "https://romaric123.pythonanywhere.com",
+    "cleartext": true,
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}
