@@ -1,0 +1,23 @@
+{
+  "name": "afriverse-desktop",
+  "version": "1.0.0",
+  "description": "AfriVerse - Application de bureau (Windows/Mac)",
+  "main": "main.js",
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.afriverse.app",
+    "productName": "AfriVerse",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js"
+    ],
+    "win": {
+      "target": "nsis"
+    }
+  }
+}
