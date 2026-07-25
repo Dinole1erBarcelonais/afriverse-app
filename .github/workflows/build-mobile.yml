@@ -1,0 +1,29 @@
+name: Build APK Android (AfriVerse)
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - working-directory: afriverse-mobile
+        run: npm install
+      - working-directory: afriverse-mobile
+        run: npx cap add android || true
+      - working-directory: afriverse-mobile
+        run: npx cap sync android
+      - working-directory: afriverse-mobile/android
+        run: chmod +x gradlew && ./gradlew assembleDebug
+      - uses: actions/upload-artifact@v4
+        with:
+          name: afriverse-apk
+          path: afriverse-mobile/android/app/build/outputs/apk/debug/app-debug.apk
